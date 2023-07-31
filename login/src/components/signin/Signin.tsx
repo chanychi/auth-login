@@ -3,10 +3,14 @@ import { Typography } from '@mui/material';
 import { Avatar, CssBaseline, Paper, Box, Grid } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import SigninForm from './SigninForm';
+import useRedirectIfAuth from '../../hooks/useRedirectAuth';
 
 const Signin = () => {
+const loading = useRedirectIfAuth();
 
-  return (
+if(loading) return null;
+
+  return  (
     <Grid container component="main" sx={{ height: '100vh' }}>
       <CssBaseline />
       <Grid

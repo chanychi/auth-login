@@ -1,11 +1,9 @@
-import { Grid, Box, TextField, Button, FormControlLabel, Checkbox, Link } from '@mui/material';
+import { Box, TextField, Button, FormControlLabel, Checkbox, Link } from '@mui/material';
 import Alert from '@mui/material/Alert';
-import useSignInForm from '../hooks/useSignInForm';
-// import useSignInWithEmailAndPasswordFirebase from '../hooks/useSignInWithEmailAndPasswordFirebase';
-
+import useSignInForm from '../../hooks/signin/useSignInForm';
 
 const SigninForm= () => {
-  const { emailRef, passwordRef, handleFormSubmit, notFilled, errMsg } = useSignInForm()
+  const { emailRef, passwordRef, handleFormSubmit, errMsg } = useSignInForm()
 
   return (
     <Box component="form" noValidate onSubmit={handleFormSubmit} sx={{ mt: 1 }}>
@@ -46,25 +44,16 @@ const SigninForm= () => {
       <Button
         type="submit"
         fullWidth
-        disabled={notFilled}
         variant="contained"
-        sx={{ mt: 3, mb: 2 }}
+        sx={{ mt: 3, mb: 2, background: '#001524', '&:hover': { background: '#caf0f8', color: 'black'} }}
       >
         Sign In
       </Button>
-      <Grid container>
-        <Grid item xs>
-          <Link href="#" variant="body2">
-            Forgot password?
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="/signin
-          " variant="body2">
-            {"Don't have an account? Sign Up"}
-          </Link>
-        </Grid>
-      </Grid>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Link href="/signup" variant="body2">
+          {"Don't have an account? Sign Up"}
+        </Link>
+      </Box>
     </Box>
   );
 };
